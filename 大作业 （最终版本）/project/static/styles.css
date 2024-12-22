@@ -1,0 +1,354 @@
+/* styles.css */
+body {/* 页面 */
+    font-family: Arial, sans-serif;/* 字体 */
+    margin: 0;/* 外边距 */
+    padding: 0;/* 内边距 */
+    height: 100vh;/* 高度 */
+    display: flex;/* 弹性布局 */
+    justify-content: center;/* 居中 */
+    align-items: center;/* 顶部对齐 */
+    background-color: #f0f0f0;/* 背景颜色 */
+}
+
+#calendar {/*日历*/
+    width: 1200px; /* 固定宽度 */
+    height: 900px; /* 固定高度 */
+    max-width: 1200px;/* 最大宽度 */
+    max-height: 850px;/* 最大高度 */
+    background-color: white;/* 白色背景 */
+    border-radius: 8px;/* 圆角 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);/* 阴影 */
+    overflow: hidden;/* 溢出隐藏 */
+    display: flex;/* 弹性布局 */
+    flex-direction: column;/* 垂直布局 */
+    margin: 50px; /* 添加顶部间距，20px */
+}
+
+#customBorder {/* 下面边框 */
+    width: 99.7%; /* 设置宽度 */
+    height: 90px; /* 设置高度 */
+    margin-top: 50px; /* 设置与上方元素的距离 */
+    margin-bottom: 0px; /* 设置与下方元素的距离 */
+    background-color: #f6f5f5; /* 设置背景颜色 */
+    border: 2px solid #804274; /* 设置边框 */
+    border-radius: 8px; /* 设置圆角 */
+    position: relative; /* 定位按钮 */
+}
+
+#header {/* 头部 */
+    display: flex;/* 弹性布局 */
+    align-items: center;/* 对齐 */
+    padding: 20px;/* 内边距 */
+    background-color: #007bff;/* 背景颜色 */    
+    color: #fff;/* 文字颜色 */
+    flex: 0 0 60px;/* 弹性布局 */
+}
+
+#header button, #header span {/* 按钮 */
+    background-color: #e0e0e0; /* 浅灰色背景 */
+    border: 2px solid #ccc; /* 圆角边框 */
+    border-radius: 12px; /* 圆角 */
+    padding: 10px 15px;/* 内边距 */
+    cursor: pointer;/* 指针 */
+    font-size: 16px;/* 字体大小 */
+    color: #333;/* 文字颜色 */
+    margin:0 80px; /* 添加间距 */
+}
+
+#todayButton {
+    margin-left: auto; /* 将"今日"按钮推到最右边 */
+}
+
+#calendarTable {/* 日历表格 */
+    width: 100%;/* 宽度 */
+    flex: 1;
+    border-collapse: collapse;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
+}
+
+#calendarTable th, #calendarTable td {/* 表格头部和日期栏 */
+    width: 14.28%;
+    height: 110px; /* 设置固定高度，确保铺满 */
+    text-align: center;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+#calendarTable th {/* 星期栏 */
+    height: 50px; /* 高度 */
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+#calendarTable td.current-day {/* 当前日期 */
+    background-color: #e0e0e0; /* 背景颜色 */
+    color: #333; /* 文字颜色 */
+    font-weight: bold;/* 字体加粗 */
+    border-radius: 8px; /* 圆角 */
+}
+
+#calendarTable td.filler-day {/* 空日期 */
+    color: #ccc;/* 文字颜色 */
+}
+
+#calendarTable.fade-out {/* 淡出 */
+    opacity: 0; /* 透明度 */
+}
+
+#calendarTable.fade-in {/* 淡入 */
+    opacity: 1;/* 透明度 */
+}
+
+#calendarWrapper {/* 日历内容 */
+    overflow: hidden;/* 溢出隐藏 */
+    width: 100%;
+}
+
+.tooltip {/* 悬浮框 */  
+    position: absolute;/* 绝对定位 */
+    background-color: white;/* 背景颜色 */
+    border: 1px solid #ddd;/* 边框 */
+    border-radius: 4px;/* 圆角 */
+    padding: 10px;/* 内边距 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);/* 阴影 */
+    display: none;
+    z-index: 1000;
+    color: black;
+    width: 300px; /* 设置宽度 */
+    margin: 10px; /* 增加外边距 */
+}
+
+td {/* 日期栏中的字 */
+    font-size: 25px; 
+}
+
+.solar-term {/* 节气 */
+    color: blue;
+    font-size: 25px;
+}
+
+.festival {/* 节日 */
+    color: red;
+    font-size: 25px; 
+}
+
+.holiday {/* 国定假日 */
+    color: green;
+    font-size: 25px;
+}
+
+.sidebar { /* 左侧边栏 */
+    width: 300px; /* 设置宽度 */
+    height: 800px; /* 设置高度 */
+    border: 2px solid blue; /* 蓝色边框 */
+    border-radius: 8px; /* 圆角 */
+    margin: 0 20px;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px; /* 添加顶部间距 */
+}
+
+.sidebar { /* 右侧边栏 */
+    width: 300px; /* 设置宽度 */
+    height: 800px; /* 设置高度 */
+    border: 2px solid blue; /* 蓝色边框 */
+    border-radius: 8px; /* 圆角 */
+    margin-left: 50px; /* 左边距 */
+    margin-right: 50px; /* 右边距 */
+    float: right; /* 右浮动 */
+    margin-top: 50px; /* 添加顶部间距 */
+}
+
+.dialog {/* 弹窗 */
+    position: fixed;/* 固定定位 */
+    top: 50%;/* 顶部 */ 
+    left: 50%;/* 左边 */
+    transform: translate(-50%, -50%);/* 转换 */
+    background-color: #fff;/* 背景颜色 */
+    padding: 40px 30px;/* 内边距 */
+    border: 1px solid #ccc;/* 边框 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);/* 阴影 */
+    z-index: 1000;/* 层级 */
+    border-radius: 12px;/* 圆角 */
+    width: 600px;/* 宽度 */
+    max-width: 90%;/* 最大宽度 */
+    transition: all 0.3s ease-in-out;/* 过渡 */
+}
+
+#userInput {/* 输入框 */
+    width: 100%;/* 宽度 */
+    height: 150px;/* 高度 */
+    margin: 20px auto; /* 调整上下边距 */
+    border-radius: 8px;/* 圆角 */
+    border: 1px solid #ddd;/* 边框 */
+    padding: 10px;/* 内边距 */
+    font-size: 16px;/* 字体大小 */
+    resize: none;/* 禁止调整大小 */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);/* 阴影 */
+    transition: border-color 0.3s;/* 过渡 */
+}
+
+#userInput:focus {/* 输入框 聚焦 */
+    border-color: #007bff;/* 边框颜色 */
+    outline: none;/* 轮廓 */
+}
+
+button {/* 按钮 */
+    background-color: #007bff;/* 背景颜色 */
+    border: none;/* 边框 */
+    border-radius: 8px;/* 圆角 */
+    padding: 10px 10px;/* 内边距 */
+    cursor: pointer;/* 指针 */
+    color: white;/* 文字颜色 */
+    font-size: 16px;/* 字体大小 */
+    transition: background-color 0.3s, transform 0.3s;/* 过渡 */
+    margin-top: 10px; /* 调整按钮与输入框之间的距离 */
+}
+
+.close-button {/* 关闭按钮 */
+    position: absolute;/* 绝对定位 */
+    top: 10px;/* 顶部 */
+    right: 10px;/* 右边 */
+    background: none;/* 背景 */
+    border: none;/* 边框 */
+    font-size: 24px;/* 字体大小 */
+    cursor: pointer;/* 指针 */
+    color: #888;/* 文字颜色 */
+    transition: color 0.3s;/* 过渡 */
+}
+
+.close-button:hover {/* 关闭按钮 悬浮 */
+    color: #ff0000;/* 文字颜色 */
+}
+
+.sidebar-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px; /* 增大字体 */
+    border-radius: 8px 8px 0 0;
+    margin: -10px -10px 10px -10px; /* 调整位置 */
+}
+
+table {/* 表格 */   
+    width: 100%;
+    table-layout: fixed; /* 固定表格布局 */
+    border-collapse: collapse;
+}
+
+th, td {/* 表格头部和日期栏 */  
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    overflow: hidden; /* 防止内容溢出 */
+}
+
+td:first-child {
+    width: 20%; /* 调整ID栏宽度 */
+}
+
+.details {/* 日程和日记的详细内容 */    
+    background-color: #f9f9f9;
+    font-size: 12px;
+    color: #555;
+}
+
+tr:hover {/* 表格行悬浮 */  
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.small-text {/* 边栏小字体 */   
+    font-size: 12px;
+    color: #555;
+}
+
+.small-header {/* 小字体标题 */ 
+    font-size: 14px; /* 与ID字体大小一致 */
+    color: #555;
+}
+
+#changeSkinButton {/* 换肤按钮 */
+    position: absolute; /* 绝对定位按钮 */
+    right: 10px; /* 距离右侧10px */
+    top: 50%; /* 垂直居中 */
+    transform: translateY(-50%); /* 垂直居中调整 */
+    background-color: #007bff; /* 按钮背景颜色 */
+    color: white; /* 按钮文字��色 */
+    border: none; /* 移除边框 */
+    border-radius: 8px; /* 圆角 */
+    padding: 10px 15px; /* 内边距 */
+    cursor: pointer; /* 鼠标指针 */
+    font-size: 16px; /* 字体大小 */
+    transition: background-color 0.3s; /* 过渡效果 */
+}
+
+#changeSkinButton:hover {
+    background-color: #0056b3; /* 悬停时背景颜色 */
+}
+
+#adjustOpacityButton:hover {/* 调整透明度按钮 悬浮 */
+    background-color: #0056b3; /* 悬停时背景颜色 */
+}
+
+#opacitySlider {/* 滑动条 */
+    position: absolute; /* 在 customBorder 内部定位滑动条 */
+    right: 150px; /* 调整位置以在更换皮肤按钮左侧 */
+    top: 50%; /* 垂直居中 */
+    transform: translateY(-50%); /* 完美居中调整 */
+    width: 100px; /* 滑动条宽度 */
+}
+
+#loginButton {/* 登录按钮 */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#loginButton:hover {/* 登录按钮 悬浮 */
+    background-color: #0056b3;
+}
+
+#userInfo {/* 用户信息 */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+#userInfo span {/* 用户信息 用户名 */
+    margin-right: 10px;
+    font-size: 16px;
+    color: #f30505;
+}
+
+#logoutButton {/* 注销按钮 */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#logoutButton:hover {/* 注销按钮 悬浮 */
+    background-color: #0056b3;
+}

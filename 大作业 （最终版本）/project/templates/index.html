@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数字万年历</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    {% if session.get('username') %}
+        <div id="userInfo">
+            <span>{{ session['username'] }}</span>
+            <button id="logoutButton" onclick="window.location.href='/logout'">注销</button>
+        </div>
+    {% else %}
+        <button id="loginButton" onclick="window.location.href='/admin_login'">登录</button>
+    {% endif %}
+    <div class="sidebar">
+        <div class="sidebar-header">日程</div>
+        <table id="scheduleTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>日期</th>
+                </tr>
+            </thead>
+            <tbody id="scheduleContainer"></tbody>
+        </table>
+    </div>
+
+    <div id="calendar">
+        <div id="header">
+            <span id="year" onclick="calendar.showYearSelection()"></span>年 
+            <button id="prevMonth" aria-label="上个月">←</button>
+            <span id="month"></span>月
+            <button id="nextMonth" aria-label="下个月">→</button>
+            <button id="todayButton" aria-label="回到今天">今日</button> 
+            <div class="tooltip" style="position: absolute; display: none;"></div>
+        </div>
+        <div id="calendarWrapper">
+            <table id="calendarTable">
+                <thead>
+                    <tr>
+                        <th>日</th>
+                        <th>一</th>
+                        <th>二</th>
+                        <th>三</th>
+                        <th>四</th>
+                        <th>五</th>
+                        <th>六</th>
+                    </tr>
+                </thead>
+                <tbody id="calendarBody">
+                    <!-- 日历内容将由 JavaScript 动态生成 -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 新的边框 -->
+        <div id="customBorder">
+            <p>(1)鼠标移动到某个日期格可以查看当日详情</p>
+            <p>(2)
+                <span style="color: red;">红色</span>表示农历传统节日，
+                <span style="color: green;">绿色</span>表示公众/国际节日，
+                <span style="color: blue;">蓝色</span>表示24节气日
+            </p>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <div class="sidebar-header">日记</div>
+        <table id="diaryTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>日期</th>
+                </tr>
+            </thead>
+            <tbody id="diaryContainer"></tbody>
+        </table>
+    </div>
+
+    <!-- 对话框 -->
+    <div id="dialog" class="dialog" style="display: none;">
+        <button id="closeButton" class="close-button">×</button>
+        <textarea id="userInput" placeholder="输入内容..."></textarea>
+        <button id="saveButton">保存</button>
+    </div>
+
+    <script src="static/lunar-javascript-1.6.13/lunar.js"></script>
+    <script src="static/script.js"></script>
+</body>
+</html>
